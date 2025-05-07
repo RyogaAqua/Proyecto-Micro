@@ -26,15 +26,15 @@ with app.app_context():
         },
         {
             "username": "John Doe",
-            "email": "prof@example.com",
+            "email": "orgjd@example.com",
             "password": "prof123",
-            "role_name": "Professor"
+            "role_name": "Organizador"
         },
         {
             "username": "Steve Jobs",
-            "email": "student@example.com",
-            "password": "student123",
-            "role_name": "Student"
+            "email": "stvjbs@example.com",
+            "password": "participant123",
+            "role_name": "Participante"
         }
     ]
 

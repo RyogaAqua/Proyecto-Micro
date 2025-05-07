@@ -4,3 +4,5 @@ Flask-Login
 Flask-WTF
 email-validator
 PyMySQL
+
+werkzeug==2.1.0 
