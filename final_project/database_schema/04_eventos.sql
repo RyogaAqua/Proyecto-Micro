@@ -18,11 +18,11 @@ CREATE TABLE user (
 
 CREATE TABLE evento (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(150),
-    ubicacion VARCHAR(200),
-    fecha_hora DATETIME,
-    capacidad INT,
+    nombre VARCHAR(150) NOT NULL,
+    ubicacion VARCHAR(200) NOT NULL,
+    fecha_inicio DATETIME NOT NULL,
+    fecha_fin DATETIME NOT NULL,
     descripcion TEXT
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Tabla para gestionar eventos';
 
 INSERT INTO role (name) VALUES ('Admin'), ('Organizador'), ('Participante');
