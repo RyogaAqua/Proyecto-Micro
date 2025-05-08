@@ -1,7 +1,16 @@
 from app import create_app
+from app.models import db
 
 # Crea la instancia de la aplicación Flask utilizando la factoría
 app = create_app()
+
+# Inicializa la base de datos
+with app.app_context():
+    try:
+        db.create_all()
+        print("Base de datos inicializada correctamente.")
+    except Exception as e:
+        print(f"Error al inicializar la base de datos: {e}")
 
 # Punto de entrada de la aplicación
 if __name__ == '__main__':

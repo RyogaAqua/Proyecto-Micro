@@ -1,11 +1,14 @@
-### Editar un curso (POST)
+### Editar un evento (PUT)
 
-# Simular POST con nuevos datos del curso
+# Simular PUT con nuevos datos del evento
 
-PUT http://localhost:5000/cursos/4
+PUT http://localhost:5000/eventos/4
 Content-Type: application/json
 
 {
-  "titulo": "Curso actualizado",
-  "descripcion": "Nueva descripción actualizada"
+  "nombre": "Evento actualizado",
+  "ubicacion": "Nueva ubicación actualizada",
+  "fecha_inicio": "2025-05-20T10:00:00",
+  "fecha_fin": "2025-05-20T18:00:00",
+  "descripcion": "Descripción actualizada del evento."
 }

@@ -1,4 +1,4 @@
-### Obtener todos los cursos (GET)
+### Obtener todos los eventos (GET)
 
-GET http://localhost:5000/cursos
+GET http://localhost:5000/eventos
 Content-Type: application/json

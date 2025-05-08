@@ -1,0 +1,27 @@
+{% extends "layout.html" %} {% block title %}Event List{% endblock %} {% block
+content %}
+<h3 class="mb-4">List of Events</h3>
+
+<table class="table table-striped table-hover">
+  <thead class="table-light">
+    <tr>
+      <th>Event Name</th>
+      <th>Location</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for evento in eventos %}
+    <tr>
+      <td>{{ evento.nombre }}</td>
+      <td>{{ evento.ubicacion }}</td>
+      <td>{{ evento.fecha_inicio }}</td>
+      <td>{{ evento.fecha_fin }}</td>
+      <td>{{ evento.descripcion }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

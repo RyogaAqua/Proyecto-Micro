@@ -50,3 +50,16 @@ class Curso(db.Model):
     titulo = db.Column(db.String(100), nullable=False)
     descripcion = db.Column(db.Text, nullable=False)
     profesor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+# Modelo de evento asociado a la tabla 'evento'
+class Evento(db.Model):
+    __tablename__ = 'evento'
+
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(150), nullable=False)
+    ubicacion = db.Column(db.String(200), nullable=False)
+    fecha_inicio = db.Column(db.DateTime, nullable=False)
+    fecha_fin = db.Column(db.DateTime, nullable=False)
+    descripcion = db.Column(db.Text, nullable=True)
+    organizador_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    organizador = db.relationship('User', backref='eventos')

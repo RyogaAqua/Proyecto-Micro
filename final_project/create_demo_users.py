@@ -6,7 +6,7 @@ app = create_app()
 
 with app.app_context():
     # Asegurarse de que los roles existen
-    roles = ['Admin', 'Professor', 'Student']
+    roles = ['Admin', 'Organizador', 'Participante']
     for role_name in roles:
         existing_role = Role.query.filter_by(name=role_name).first()
         if not existing_role:

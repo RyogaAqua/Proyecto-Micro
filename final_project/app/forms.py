@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, SelectField
-from wtforms.validators import DataRequired, Email, EqualTo, Length
+from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional
+from wtforms.fields import DateTimeField
 
 # Formulario para login de usuario
 class LoginForm(FlaskForm):
@@ -17,7 +18,7 @@ class RegisterForm(FlaskForm):
     
     role = SelectField(
         'Role',
-        choices=[('Student', 'Student'), ('Professor', 'Professor')],
+        choices=[('Admin', 'Admin'), ('Organizador', 'Organizador'), ('Participante', 'Participante')],
         validators=[DataRequired()]
     )
 
@@ -35,3 +36,12 @@ class CursoForm(FlaskForm):
     titulo = StringField('Course title', validators=[DataRequired()])
     descripcion = TextAreaField('Description', validators=[DataRequired()])
     submit = SubmitField('Save')
+
+# Formulario para crear o editar un evento
+class EventForm(FlaskForm):
+    nombre = StringField('Event Name', validators=[DataRequired(), Length(max=150)])
+    ubicacion = StringField('Location', validators=[DataRequired(), Length(max=200)])
+    fecha_inicio = DateTimeField('Start Date', format='%Y-%m-%dT%H:%M', validators=[DataRequired()])
+    fecha_fin = DateTimeField('End Date', format='%Y-%m-%dT%H:%M', validators=[DataRequired()])
+    descripcion = TextAreaField('Description', validators=[Length(max=500)])
+    submit = SubmitField('Create Event')

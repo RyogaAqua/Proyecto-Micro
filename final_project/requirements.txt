@@ -1,8 +1,8 @@
-Flask
-Flask-SQLAlchemy
-Flask-Login
-Flask-WTF
-email-validator
-PyMySQL
-
-werkzeug==2.1.0 
+Flask==2.2.5
+Flask-SQLAlchemy==2.5.1
+Flask-Login==0.6.3
+Flask-WTF==1.1.1
+email-validator==1.3.0
+PyMySQL==1.0.2
+SQLAlchemy<2.0
+werkzeug==2.1.0

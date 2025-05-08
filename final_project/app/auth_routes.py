@@ -10,37 +10,53 @@ auth = Blueprint('auth', __name__)
 def login():
     """
     Inicia sesión de un usuario existente si las credenciales son válidas.
+    Registra el inicio de sesión en la tabla `login`.
     """
     form = LoginForm()
 
-    # Procesamiento del formulario si es enviado correctamente
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
 
-        # Verifica si el usuario existe y la contraseña es válida
         if user and user.check_password(form.password.data):
             login_user(user)
+
+            # Registrar el inicio de sesión en la tabla `login`
+            db.session.execute(
+                """
+                INSERT INTO login (user_id) VALUES (:user_id)
+                """,
+                {"user_id": user.id}
+            )
+            db.session.commit()
+
             return redirect(url_for('main.dashboard'))
 
-        # Mensaje si las credenciales no son válidas
-        flash('Invalid credentials')  # 🔁 Traducido
+        flash('Invalid credentials')
 
-    # Renderiza el formulario de login
     return render_template('login.html', form=form)
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     """
-    Registra un nuevo usuario y lo asocia por defecto al rol "Student".
+    Registra un nuevo usuario y lo almacena en la tabla `signup`.
     """    
     form = RegisterForm()
     
-    # Procesa el formulario si fue enviado correctamente
     if form.validate_on_submit():
-        # Buscar el rol por nombre seleccionado
-        role = Role.query.filter_by(name=form.role.data).first() # Puedes renombrar esto a 'Student' si cambias toda la app a inglés
+        # Verificar si el nombre de usuario ya existe
+        existing_user = User.query.filter_by(username=form.username.data).first()
+        if existing_user:
+            flash('Username already exists. Please choose a different one.')
+            return render_template('register.html', form=form)
 
-        # Crea el usuario con datos del formulario
+        # Verificar si el correo electrónico ya existe
+        existing_email = User.query.filter_by(email=form.email.data).first()
+        if existing_email:
+            flash('Email already exists. Please use a different one.')
+            return render_template('register.html', form=form)
+
+        role = Role.query.filter_by(name=form.role.data).first()
+
         user = User(
             username=form.username.data,
             email=form.email.data,
@@ -48,15 +64,25 @@ def register():
         )
         user.set_password(form.password.data)
 
-        # Guarda en la base de datos
         db.session.add(user)
         db.session.commit()
 
-        # Muestra mensaje de éxito
+        # Registrar el nuevo usuario en la tabla `signup`
+        db.session.execute(
+            """
+            INSERT INTO signup (username, email, password_hash) VALUES (:username, :email, :password_hash)
+            """,
+            {
+                "username": user.username,
+                "email": user.email,
+                "password_hash": user.password_hash
+            }
+        )
+        db.session.commit()
+
         flash('User registered successfully.')
         return redirect(url_for('auth.login'))
     
-    # Renderiza el formulario de registro
     return render_template('register.html', form=form)
 
 @auth.route('/logout')

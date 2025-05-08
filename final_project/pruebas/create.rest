@@ -1,10 +1,12 @@
-### Crear un nuevo curso (POST)
+### Crear un nuevo evento (POST)
 
-POST http://localhost:5000/cursos
+POST http://localhost:5000/eventos
 Content-Type: application/json
 
 {
-  "titulo": "Flask Avanzado",
-  "descripcion": "Curso intensivo de desarrollo con Flask",
-  "profesor_id": 1
+  "nombre": "Conferencia de Tecnología",
+  "ubicacion": "Centro de Convenciones",
+  "fecha_inicio": "2025-05-15T09:00:00",
+  "fecha_fin": "2025-05-15T17:00:00",
+  "descripcion": "Una conferencia sobre las últimas tendencias en tecnología."
 }
