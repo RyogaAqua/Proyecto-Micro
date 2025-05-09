@@ -26,14 +26,18 @@ def cambiar_password():
     if form.validate_on_submit():
         # Verifica que la contraseña actual sea correcta
         if not current_user.check_password(form.old_password.data):
-            flash('Current password is incorrect.')  # 🔁 Traducido
+            flash('Current password is incorrect.')
             return render_template('cambiar_password.html', form=form)
 
         # Actualiza la contraseña y guarda
         current_user.set_password(form.new_password.data)
-        db.session.commit()
-        flash('✅ Password updated successfully.')  # 🔁 Traducido
-        return redirect(url_for('main.dashboard'))
+        try:
+            db.session.commit()
+            flash('✅ Password updated successfully.')
+            return redirect(url_for('main.dashboard'))
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Error updating password: {str(e)}', 'danger')
 
     return render_template('cambiar_password.html', form=form)
 
