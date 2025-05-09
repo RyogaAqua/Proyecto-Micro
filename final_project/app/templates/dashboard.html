@@ -18,7 +18,9 @@ content %}
       <th>Location</th>
       <th>Start Date</th>
       <th>End Date</th>
+      {% if current_user.role and current_user.role.name != 'Participante' %}
       <th class="text-center">Actions</th>
+      {% endif %}
     </tr>
   </thead>
   <tbody>
@@ -29,6 +31,7 @@ content %}
       <td>{{ evento.fecha_inicio }}</td>
       <td>{{ evento.fecha_fin }}</td>
       <td class="text-center ps-0 pe-0">
+        {% if current_user.role and current_user.role.name != 'Participante' %}
         <a
           class="btn btn-sm btn-warning"
           href="{{ url_for('main.editar_evento', id=evento.id) }}"
@@ -50,6 +53,7 @@ content %}
             <i class="bi bi-trash"></i>
           </button>
         </form>
+        {% endif %}
       </td>
     </tr>
     {% endfor %}
