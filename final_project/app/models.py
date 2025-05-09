@@ -30,11 +30,9 @@ class User(UserMixin, db.Model):
     # Relación con cursos (si es profesor)
     cursos = db.relationship('Curso', backref='profesor', lazy=True)
 
-    def set_password(self, password: str):
-        """
-        Genera y guarda el hash de la contraseña.
-        """
-        self.password_hash = generate_password_hash(password)
+    def set_password(self, password):
+        # Fuerza el uso de pbkdf2:sha256
+        self.password_hash = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
 
     def check_password(self, password: str) -> bool:
         """
