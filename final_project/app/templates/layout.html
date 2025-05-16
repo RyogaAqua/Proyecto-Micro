@@ -40,14 +40,6 @@
                 >Events</a
               >
             </li>
-            <!-- Listar usuarios solo para los administradores -->
-            {% if current_user.role.name == 'Admin' %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('main.listar_usuarios') }}"
-                >Users</a
-              >
-            </li>
-            {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('main.event_create') }}">Create Event</a>
             </li>
