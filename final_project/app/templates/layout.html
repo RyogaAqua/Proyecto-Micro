@@ -16,7 +16,7 @@
     <!-- Top navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('main.index') }}">Courses</a>
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">Event Page</a>
 
         <!-- Mobile toggle button -->
         <button
@@ -36,8 +36,8 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             {% if current_user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('main.dashboard') }}"
-                >Dashboard</a
+              <a class="nav-link" href="{{ url_for('main.events') }}"
+                >Events</a
               >
             </li>
             <!-- Listar usuarios solo para los administradores -->
