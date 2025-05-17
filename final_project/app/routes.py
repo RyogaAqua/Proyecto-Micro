@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash, jsonify
 from flask_login import login_required, current_user
-from app.forms import CursoForm, ChangePasswordForm, EventForm
+from app.forms import EventForm, ChangePasswordForm, EventForm
 from app.models import db, Curso, User, Role, Evento
 import logging
 from datetime import datetime
