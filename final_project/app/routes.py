@@ -48,8 +48,7 @@ def dashboard():
     Panel principal del usuario. Muestra todos los eventos.
     """
     eventos = Evento.query.all()
-
-    return render_template('dashboard.html', eventos=eventos, current_user=current_user)
+    return render_template('events.html', eventos=eventos, current_user=current_user)
 
 @main.route('/usuarios')
 @login_required
@@ -298,3 +297,12 @@ def event_create():
             flash(f'Error creating event: {str(e)}')
 
     return render_template('event_dates.html', form=form)
+
+@main.route('/events')
+@login_required
+def events():
+    """
+    Muestra la lista de eventos usando la plantilla events.html.
+    """
+    eventos = Evento.query.all()
+    return render_template('events.html', eventos=eventos, current_user=current_user)
