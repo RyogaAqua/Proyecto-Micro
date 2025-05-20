@@ -38,6 +38,8 @@ Formularios: Flask-WTF
 Gestión de Roles: Sistema de permisos por rol
 
 Estructura del Proyecto:
+
+
 ![Diagrama](./final_project/images/diagrama.png)
 ---
 
