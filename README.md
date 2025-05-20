@@ -38,38 +38,8 @@ Formularios: Flask-WTF
 Gestión de Roles: Sistema de permisos por rol
 
 Estructura del Proyecto:
-final_project/
-│
-├── __pycache__/          # Archivos de caché de Python (generados automáticamente)
-├── app/                  # Módulo principal de la aplicación
-│   └── ...               # Código fuente de la aplicación
-│
-├── database_schema/      # Esquemas y configuraciones de base de datos
-│   └── administrador...  # Configuraciones de administración de BD
-│
-├── images/               # Imágenes utilizadas en el proyecto
-│   ├── image-01.png
-│   ├── image-02.png
-│   └── image-03.png
-│
-├── pruebas/              # Pruebas y scripts de testing
-│   ├── create.rest       # Pruebas REST para creación
-│   ├── delete.rest       # Pruebas REST para eliminación
-│   ├── read-a-row.rest   # Pruebas REST para lectura específica
-│   ├── read.rest         # Pruebas REST para lectura general
-│   ├── test_routes.py    # Pruebas unitarias de rutas
-│   └── update.rest      # Pruebas REST para actualización
-│
-├── venv/                 # Entorno virtual de Python (no incluido en control de versiones)
-│
-├── .prettierignore       # Configuración de Prettier (herramienta de formateo)
-├── config.py             # Configuración de la aplicación
-├── create_demo_us...     # Script para crear usuarios demo
-├── initialize_databa...  # Script de inicialización de base de datos
-├── README.md             # Documentación principal del proyecto
-├── requirements.txt      # Dependencias de Python requeridas
-├── run.py                # Punto de entrada de la aplicación
-└── test_connection...    # Script para probar conexión a BD
+[Diagrama](./final_project/images/diagrama.png)
+---
 
 
 
