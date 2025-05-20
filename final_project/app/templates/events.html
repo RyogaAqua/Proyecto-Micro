@@ -4,11 +4,13 @@ content %}
   <div class="col">
     <h3>Event Management</h3>
   </div>
+  {% if current_user.role and current_user.role.name != 'Participante' %}
   <div class="col text-end">
     <a class="btn btn-primary mb-3 me-2" href="{{ url_for('main.crear_evento_web') }}">
       <i class="bi bi-plus"></i> New Event
     </a>
   </div>
+  {% endif %}
 </div>
 
 <table class="table table-bordered table-hover">

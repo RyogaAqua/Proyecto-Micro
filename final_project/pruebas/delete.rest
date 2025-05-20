@@ -1,3 +1,3 @@
 ### Eliminar evento (DELETE)
 
-DELETE http://localhost:5000/eventos/4
+DELETE http://localhost:5000/eventos/2
